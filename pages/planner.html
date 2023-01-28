@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wellbeing Score System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="../styles/global.css" rel="stylesheet">
+    <link href="../styles/planner.css" rel="stylesheet">
+  </head>
+  <body onload="globalStartup()">
+    <div class="container parent-container">
+      <h1>The Authentic Happiness Project</h1>
+      <div class="navbar">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="navbar-brand" aria-current="page" href="#">
+                  <img src="../images/icons/house.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  Home
+                </a>
+                <a class="navbar-brand" href="../pages/quiz.html">
+                  <img src="../images/icons/journal.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  Wellbeing Score
+                </a>
+                <a class="navbar-brand" href="#">
+                  <img src="../images/icons/book.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  Research
+                </a>
+                <a class="navbar-brand " href="#">
+                  <img src="../images/icons/people.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  About Us
+                </a>
+                <a class="navbar-brand" href="pages/login.html" style="margin-left: 30em" id="signup">
+                  <img src="../images/icons/login.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  Sign Up
+                </a>
+                <a class="navbar-brand" href="pages/account.html" style="margin-left: 30em" id="account">
+                  <img src="../images/icons/login.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  Account
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="row">
+        <div class="col-9">
+            <div id="user-input">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <select name="task" id="task" placeholder="Add a Task..." >
+                            <option value="">Select your activity...</option>
+                            <option value="Sleep">Sleep</option>
+                            <option value="Passions">Passions</option>
+                            <option value="Meditation">Meditation</option>
+                        </select>
+        
+                        <select name="days" id="days">
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="friday">Friday</option>
+                            <option value="saturday">Saturday</option>
+                            <option value="sunday">Sunday</option>
+                        </select>
+        
+                        <input type="number" min="1" placeholder="Select duration" id="duration">
+                    </div>
+                    <div class="col-4">
+                        <button type="button" onclick="addItem()">Add Task</button>
+                        <button type="button" onclick="removeItem()">Remove Selected</button>
+                    </div>
+                </div>
+                
+                <div class="row dayDiv">
+                    <div class="col">
+                        <div class="day" id="monday"><h3>Monday</h3></div>
+                    </div>
+                    <div class="col">
+                        <div class="day" id="tuesday"><h3>Tuesday</h3></div>
+                    </div>
+                    <div class="col">
+                        <div class="day" id="wednesday"><h3>Wednesday</h3></div>
+                    </div>
+                    <div class="col">
+                        <div class="day" id="thursday"><h3>Thursday</h3></div>
+                    </div>
+                    <div class="col">
+                        <div class="day" id="friday"><h3>Friday</h3></div>
+                    </div>
+                    <div class="col">
+                        <div class="day" id="saturday"><h3>Saturday</h3></div>
+                    </div>
+                    <div class="col">
+                        <div class="day" id="sunday"><h3>Sunday</h3></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="daily">
+                <h3>Daily Habits</h3>
+                <p>Please select the averages of your past week</p>
+                <hr>
+
+                <div class="row">
+                    <div class="col">
+                        <h5>Fruits & Vegetables</h5>
+                        <input type="range" min="1" max="5" value="3" class="slider" id="fruit" oninput="showValue(this.id, value)">
+                    </div>
+
+                    <div class="col">
+                        <h6><span id="fruitValue">3</span></h6>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <h5>Stress</h5>
+                        <input type="range" min="1" max="5" value="3" class="slider" id="stress" oninput="showValue(this.id, value)">
+                    </div>
+
+                    <div class="col">
+                        <h6><span id="stressValue">3</span></h6>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <h5>Interactions</h5>
+                        <input type="range" min="1" max="10" value="5" class="slider" id="interactions" oninput="showValue(this.id, value)">
+                    </div>
+
+                    <div class="col">
+                        <h6><span id="interactionsValue">5</span></h6>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <h5>Completed To-Do</h5>
+                        <input type="range" min="1" max="10" value="5" class="slider" id="todo" oninput="showValue(this.id, value)">
+                    </div>
+
+                    <div class="col">
+                        <h6><span id="todoValue">5</span></h6>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <h5>Steps (thousands)</h5>
+                        <input type="range" min="1" max="10" value="5" class="slider" id="steps" oninput="showValue(this.id, value)">
+                    </div>
+
+                    <div class="col">
+                        <h6><span id="stepsValue">5</span></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="questions">
+        <h2 style="margin-left: 10px; margin-bottom: 50px;">Please fill in the below questions to get a more accurate score.</h2>
+
+        <div class="row justify-content-md-center question">
+          <h4 style="margin-top: 10px">How many days of vacation do you typically lose every year?</h4>
+          <p>Unused vacation days, lost or carried forward into the following year. Or because of work stress during your vacation.</p>
+          <div class="col-3">
+            <input type="range" min="0" max="10" value="5" class="slider" id="stressQ4" oninput="showValue(this.id, value)">
+          </div>
+          <div class="col-1 rangeValue">
+            <h5><span id="stressQ4Value">5</span></h5> 
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center question">
+          <h4 style="margin-top: 10px">How many days of vacation do you typically lose every year?</h4>
+          <p>Unused vacation days, lost or carried forward into the following year. Or because of work stress during your vacation.</p>
+          <div class="col-3">
+            <input type="range" min="0" max="10" value="5" class="slider" id="stressQ4" oninput="showValue(this.id, value)">
+          </div>
+          <div class="col-1 rangeValue">
+            <h5><span id="stressQ4Value">5</span></h5> 
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center question">
+          <h4 style="margin-top: 10px">How many days of vacation do you typically lose every year?</h4>
+          <p>Unused vacation days, lost or carried forward into the following year. Or because of work stress during your vacation.</p>
+          <div class="col-3">
+            <input type="range" min="0" max="10" value="5" class="slider" id="stressQ4" oninput="showValue(this.id, value)">
+          </div>
+          <div class="col-1 rangeValue">
+            <h5><span id="stressQ4Value">5</span></h5> 
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center question">
+          <h4 style="margin-top: 10px">How many days of vacation do you typically lose every year?</h4>
+          <p>Unused vacation days, lost or carried forward into the following year. Or because of work stress during your vacation.</p>
+          <div class="col-3">
+            <input type="range" min="0" max="10" value="5" class="slider" id="stressQ4" oninput="showValue(this.id, value)">
+          </div>
+          <div class="col-1 rangeValue">
+            <h5><span id="stressQ4Value">5</span></h5> 
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center question">
+          <h4 style="margin-top: 10px">How many days of vacation do you typically lose every year?</h4>
+          <p>Unused vacation days, lost or carried forward into the following year. Or because of work stress during your vacation.</p>
+          <div class="col-3">
+            <input type="range" min="0" max="10" value="5" class="slider" id="stressQ4" oninput="showValue(this.id, value)">
+          </div>
+          <div class="col-1 rangeValue">
+            <h5><span id="stressQ4Value">5</span></h5> 
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <script src="../js/planner.js"></script>
+    <script src="../js/global.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

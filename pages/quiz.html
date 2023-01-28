@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wellbeing Score System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="../styles/global.css" rel="stylesheet">
+    <link href="../styles/quiz.css" rel="stylesheet">
+  </head>
+  <body onload="globalStartup()">
+    <div class="container parent-container">
+      <h1>The Authentic Happiness Project</h1>
+      <div class="navbar">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="navbar-brand" aria-current="page" href="/">
+                  <img src="../images/icons/house.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  Home
+                </a>
+                <a class="navbar-brand" href="../pages/quiz.html">
+                  <img src="../images/icons/journal.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  Wellbeing Score
+                </a>
+                <a class="navbar-brand" href="#">
+                  <img src="../images/icons/book.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  Research
+                </a>
+                <a class="navbar-brand " href="#">
+                  <img src="../images/icons/people.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  About Us
+                </a>
+                <a class="navbar-brand" href="pages/login.html" style="margin-left: 30em" id="signup">
+                  <img src="../images/icons/login.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  Sign Up
+                </a>
+                <a class="navbar-brand" href="pages/account.html" style="margin-left: 30em" id="account">
+                  <img src="../images/icons/login.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                  Account
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div id="quizzesCarousel" class="carousel slide" data-bs-ride="carousel" data-interval="false">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#quizzesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#quizzesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#quizzesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#quizzesCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="quiz" id="stressQuiz">
+              <form>
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">In a typical week, how many times do you have the opportunity to think about yourself?</h4>
+                  <p>Include meditation, praying and relaxation activities such as fitness, walking in a park or lunch breaks.</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="10" value="5" class="slider" id="stressQ1" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="stressQ1Value">5</span></h5> 
+                  </div>
+                </div>
+      
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How well do you complete your weekly to-do lists?</h4>
+                  <p>Include your weekly goals, work and personal-related tasks. On a scale of 0-10 where 0 is not at all and 10 is very well.</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="10" value="5" class="slider" id="stressQ2" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="stressQ2Value">5</span></h5> 
+                  </div>
+                </div>
+      
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How often do you shout or sulk at somebody?</h4>
+                  <p>In a typical week. Expressing your negative emotions in an active or passive manner.</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="10" value="5" class="slider" id="stressQ3" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="stressQ3Value">5</span></h5> 
+                  </div>
+                </div>
+      
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How many days of vacation do you typically lose every year?</h4>
+                  <p>Unused vacation days, lost or carried forward into the following year. Or because of work stress during your vacation.</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="10" value="5" class="slider" id="stressQ4" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="stressQ4Value">5</span></h5> 
+                  </div>
+                </div>
+      
+                <a class="carousel-control-next" href="#quizzesCarousel" role="button" data-slide="next">
+                  <input class="btn btn-primary" type="button" value="Submit Quiz" onclick="submitStressAnswers()">
+                </a>
+              </form>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="quiz" id="healthQuiz">
+              <form>
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How many steps (in thousands) do you typically walk everyday?</h4>
+                  <p>Thousand steps, daily average over multiple days including work days and weekend. If it is over 10 thousand, please select 10.</p>
+                  <div class="col-4">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="healthQ1" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="healthQ1Value">5</span></h5> 
+                  </div>
+                </div>
+      
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How long do you usually sleep in a night?</h4>
+                  <p>Over the course of a typical working week, including weekend.</p>
+                  <div class="col-4">
+                    <input type="range" min="1" max="10" value="5" class="slider" id="healthQ2" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="healthQ2Value">5</span></h5> 
+                  </div>
+                </div>
+      
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How may fruits or vegetables do you eat everyday?</h4>
+                  <p>In a typical day, averaging workdays and weekends. Select 5 if more than 5.</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="5" value="3" class="slider" id="healthQ3" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="healthQ3Value">3</span></h5> 
+                  </div>
+                </div>
+      
+                <a class="carousel-control-next" href="#quizzesCarousel" role="button" data-slide="next">
+                  <input class="btn btn-primary" type="button" value="Submit Quiz" onclick="submitHealthAnswers()">
+                </a>
+              </form>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="quiz" id="socialQuiz">
+              <form>
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How many times do you donate your time or money to good causes?</h4>
+                  <p>Over a period of 12 months. Include financial donation, your time contribution, fundraising, volunteering or serving your country</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="5" value="3" class="slider" id="socialQ1" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="socialQ1Value">3</span></h5> 
+                  </div>
+                </div>
+      
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How many people do you help achieve a better life?</h4>
+                  <p>A reflection of your altruism or selflessness (see the TED video from Matthieu Ricard 'How to let altruism be your guide'). For example, 
+                    caring for your family, actively supporting a friend, mentoring, coaching, developing or promoting a co-worker, over a period of 12 months.</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="10" value="5" class="slider" id="socialQ2" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="socialQ2Value">5</span></h5> 
+                  </div>
+                </div>
+      
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How many years ahead is your life vision very clear for?</h4>
+                  <p>For instance, illustrated in a vision board, detailed in a personal journal or openly discussed with your spouse or close friends.</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="10" value="5" class="slider" id="socialQ3" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="socialQ3Value">5</span></h5> 
+                  </div>
+                </div>
+      
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">With how many people do you interact with during a typical day?</h4>
+                  <p>True interactions and dialogues at home, at work or at the gym etc. Average of workdays and weekends</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="10" value="5" class="slider" id="socialQ4" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="socialQ4Value">5</span></h5> 
+                  </div>
+                </div>
+
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How many new places do you visit?</h4>
+                  <p>Over a period of 12 months. Include new cities as well as museums, places of interest and parks in your area.</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="10" value="5" class="slider" id="socialQ5" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="socialQ5Value">5</span></h5> 
+                  </div>
+                </div>
+      
+                <a class="carousel-control-next" href="#quizzesCarousel" role="button" data-slide="next">
+                  <input class="btn btn-primary" type="button" value="Submit Quiz" onclick="submitSocialAnswers()">
+                </a>
+              </form>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="quiz" id="achQuiz">
+              <form>
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How many achivements have you received in your life?</h4>
+                  <p>Significant public recognitions validating a personal level of expertise and engagement. For instance, diploma, degree, certificate, accreditation, award, prize, 
+                    published book, presentation at major conference, medals, cups, titles or more.</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="10" value="5" class="slider" id="achQ1" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="achQ1Value">5</span></h5> 
+                  </div>
+                </div>
+      
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">In a typical day, how many hours do you experience "Flow"?</h4>
+                  <p>'Flow' is defined as the mental state, in which you are fully immersed in performing an activity. You then experience a feeling of energized focus, full involvement, 
+                    and enjoyment in the process of this activity.</p>
+                  <div class="col-4">
+                    <input type="range" min="0" max="10" value="5" class="slider" id="achQ2" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="achQ2Value">5</span></h5> 
+                  </div>
+                </div>
+      
+                <div class="row justify-content-md-center question">
+                  <h4 style="margin-top: 10px">How sufficient is your income to cover your basic life expenses?</h4>
+                  <p>Such as the costs of housing, food, health care, car and education. Select 1 if your income is not sufficient and 2 if your income is sufficient.</p>
+                  <div class="col-4">
+                    <input type="range" min="1" max="2" value="2" class="slider" id="achQ3" oninput="showValue(this.id, value)">
+                  </div>
+                  <div class="col-1 displayValueDiv">
+                    <h5><span id="achQ3Value">2</span></h5> 
+                  </div>
+                </div>
+      
+                <a class="carousel-control-next" href="#quizzesCarousel" role="button" data-slide="next">
+                  <input class="btn btn-primary" type="button" value="Finalise Quizzes" onclick="submitAchAnswers()">
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="../js/quiz.js"></script>
+    <script src="../js/global.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>

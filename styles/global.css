@@ -1,0 +1,13 @@
+body{
+    background-color: #ccdbee;
+}
+
+.parent-container{
+    margin-top: 70px;
+}
+
+.navbar-expand-lg{
+    background-color: #81b1ef;
+    border-radius: 20px;
+    width: 100% !important;
+}
